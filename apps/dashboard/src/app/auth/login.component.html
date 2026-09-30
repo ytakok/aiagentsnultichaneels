@@ -1,0 +1,48 @@
+<main class="login-page">
+  <section class="login-panel" aria-labelledby="login-title">
+    <div class="login-mark" aria-hidden="true">AH</div>
+    <p class="eyebrow">AGENT HUB</p>
+    <h1 id="login-title">Welcome back</h1>
+    <p class="intro">Sign in to your message workspace.</p>
+
+    <form (ngSubmit)="submit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          name="email"
+          autocomplete="username"
+          required
+          [ngModel]="email()"
+          (ngModelChange)="email.set($event)"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          name="password"
+          autocomplete="current-password"
+          required
+          [ngModel]="password()"
+          (ngModelChange)="password.set($event)"
+        />
+      </mat-form-field>
+
+      @if (errorMessage()) {
+        <p class="error-message" role="alert">{{ errorMessage() }}</p>
+      }
+
+      <button mat-flat-button type="submit" [disabled]="pending()">
+        @if (pending()) {
+          Signing in...
+        } @else {
+          Sign in
+        }
+      </button>
+    </form>
+  </section>
+</main>

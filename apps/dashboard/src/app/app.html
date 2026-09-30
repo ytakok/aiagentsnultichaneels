@@ -1,0 +1,39 @@
+@if (auth.user(); as user) {
+	<div class="workspace">
+		<aside class="sidebar" aria-label="Main navigation">
+			<a class="brand" routerLink="/" aria-label="Agent Hub home">
+				<span class="brand-mark" aria-hidden="true">AH</span>
+				<span>Agent Hub</span>
+			</a>
+			<nav>
+				<a class="nav-link" routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">
+					<span class="nav-indicator" aria-hidden="true"></span>
+					Inbox
+				</a>
+				<a class="nav-link" routerLink="/channels" routerLinkActive="is-active">
+					<span class="nav-indicator" aria-hidden="true"></span>
+					Channels
+				</a>
+			</nav>
+			<p class="sidebar-caption">WORKSPACE</p>
+			<p class="tenant-label">Demo tenant</p>
+		</aside>
+
+		<main class="main-panel">
+			<header class="topbar">
+				<div>
+					<p class="eyebrow">WORKSPACE</p>
+					<h1>Agent Hub</h1>
+				</div>
+				<div class="account-controls">
+					<span class="user-email">{{ user.email }}</span>
+					<button type="button" class="sign-out" (click)="signOut()">Sign out</button>
+				</div>
+			</header>
+
+			<router-outlet />
+		</main>
+	</div>
+} @else {
+	<app-login />
+}

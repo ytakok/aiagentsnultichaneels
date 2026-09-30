@@ -1,0 +1,215 @@
+:host {
+	display: block;
+	min-height: 100vh;
+}
+
+.workspace {
+	display: grid;
+	min-height: 100vh;
+	grid-template-columns: 15rem minmax(0, 1fr);
+}
+
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-6);
+	padding: var(--space-6) var(--space-4);
+	background: #193b3a;
+	color: #f5fbf8;
+}
+
+.brand {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	color: inherit;
+	font-size: 1.125rem;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.brand-mark {
+	display: grid;
+	width: 2.5rem;
+	aspect-ratio: 1;
+	place-items: center;
+	border: 1px solid rgb(255 255 255 / 24%);
+	border-radius: 6px;
+	color: #b7e0d3;
+	font-size: 0.75rem;
+}
+
+nav {
+	display: grid;
+	gap: var(--space-1);
+}
+
+.nav-link {
+	display: flex;
+	min-height: 2.75rem;
+	align-items: center;
+	gap: var(--space-3);
+	padding: 0 var(--space-3);
+	border-radius: 4px;
+	color: #d1e1dc;
+	text-decoration: none;
+}
+
+.nav-link.is-active {
+	background: rgb(255 255 255 / 12%);
+	color: white;
+}
+
+.nav-indicator {
+	width: 0.4rem;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background: #79d6bf;
+}
+
+.sidebar-caption {
+	margin: auto 0 0;
+	color: #9eb8b1;
+	font-size: 0.6875rem;
+	font-weight: 700;
+}
+
+.tenant-label {
+	margin: calc(-1 * var(--space-4)) 0 0;
+	color: #e2eeea;
+	font-size: 0.875rem;
+}
+
+.main-panel {
+	min-width: 0;
+}
+
+.topbar {
+	display: flex;
+	min-height: 7rem;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-4);
+	padding: var(--space-6) clamp(var(--space-6), 5vw, 4rem);
+	border-bottom: 1px solid var(--line-subtle);
+	background: var(--surface-panel);
+}
+
+.eyebrow {
+	margin: 0 0 var(--space-1);
+	color: var(--color-accent);
+	font-size: 0.6875rem;
+	font-weight: 700;
+}
+
+h1 {
+	margin: 0;
+	font-size: 1.625rem;
+}
+
+.account-controls {
+	display: flex;
+	align-items: center;
+	gap: var(--space-4);
+}
+
+.user-email {
+	overflow: hidden;
+	max-width: 16rem;
+	color: var(--color-muted);
+	font-size: 0.875rem;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.sign-out {
+	min-height: 2.5rem;
+	padding: 0 var(--space-3);
+	border: 1px solid var(--line-subtle);
+	border-radius: 4px;
+	background: transparent;
+	color: var(--color-ink);
+	cursor: pointer;
+}
+
+.sign-out:hover {
+	background: var(--surface-page);
+}
+
+.inbox-content {
+	display: grid;
+	min-height: calc(100vh - 7rem);
+	place-items: center;
+	padding: var(--space-8);
+}
+
+.empty-state {
+	max-width: 27rem;
+	text-align: center;
+}
+
+.empty-mark {
+	display: grid;
+	width: 3.25rem;
+	aspect-ratio: 1;
+	margin: 0 auto var(--space-4);
+	place-items: center;
+	border: 1px solid var(--line-subtle);
+	border-radius: 8px;
+	background: var(--surface-panel);
+	color: var(--color-accent);
+	font-weight: 700;
+}
+
+h2 {
+	margin: 0 0 var(--space-2);
+	font-size: 1.125rem;
+}
+
+.empty-state p {
+	margin: 0;
+	color: var(--color-muted);
+	line-height: 1.6;
+}
+
+@media (max-width: 48rem) {
+	.workspace {
+		grid-template-columns: 1fr;
+	}
+
+	.sidebar {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		align-items: center;
+		gap: var(--space-3);
+		padding: var(--space-3) var(--space-4);
+	}
+
+	nav {
+		justify-self: end;
+	}
+
+	.nav-link {
+		min-height: 2.5rem;
+	}
+
+	.sidebar-caption,
+	.tenant-label {
+		display: none;
+	}
+
+	.topbar {
+		align-items: flex-start;
+		flex-direction: column;
+		padding: var(--space-6) var(--space-4);
+	}
+
+	.account-controls {
+		width: 100%;
+		justify-content: space-between;
+	}
+
+	.inbox-content {
+		min-height: 55vh;
+	}
+}

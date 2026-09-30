@@ -1,0 +1,57 @@
+<section class="channels-view" aria-labelledby="channels-title">
+  <header class="section-heading">
+    <div>
+      <p class="eyebrow">INTEGRATIONS</p>
+      <h2 id="channels-title">Channels</h2>
+    </div>
+    <button type="button" class="refresh-button" (click)="refresh()" [disabled]="loading()">
+      Refresh status
+    </button>
+  </header>
+
+  @if (resultMessage()) {
+    <p class="notice success" role="status">{{ resultMessage() }}</p>
+  }
+  @if (errorMessage()) {
+    <p class="notice error" role="alert">{{ errorMessage() }}</p>
+  }
+
+  <article class="channel-row">
+    <div class="channel-icon" aria-hidden="true">G</div>
+    <div class="channel-copy">
+      <h3>Gmail</h3>
+      <p>Read-only access to new email. Messages are checked every 60 seconds.</p>
+      @if (loading()) {
+        <p class="channel-state">Checking connection...</p>
+      } @else if (status()?.status === 'connected') {
+        <p class="channel-state is-connected">Connected as {{ status()?.emailAddress }}</p>
+        @if (status()?.lastPollAt) {
+          <p class="last-poll">Last checked {{ status()?.lastPollAt }}</p>
+        }
+        @if (status()?.lastError) {
+          <p class="notice error">{{ status()?.lastError }}</p>
+        }
+      } @else if (!status()?.configured) {
+        <p class="channel-state">OAuth client credentials are not configured.</p>
+      } @else {
+        <p class="channel-state">Not connected</p>
+      }
+    </div>
+    @if (status()?.status === 'connected') {
+      <span class="connection-badge">Connected</span>
+    } @else {
+      <button
+        mat-flat-button
+        type="button"
+        [disabled]="loading() || connecting() || !status()?.configured"
+        (click)="connect()"
+      >
+        @if (connecting()) {
+          Opening Google...
+        } @else {
+          Connect Gmail
+        }
+      </button>
+    }
+  </article>
+</section>

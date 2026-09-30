@@ -1,0 +1,131 @@
+.channels-view {
+  width: min(100%, 70rem);
+  margin: 0 auto;
+  padding: var(--space-6) clamp(var(--space-4), 5vw, 4rem) var(--space-8);
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 1.125rem;
+}
+
+.refresh-button {
+  min-height: 2.5rem;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--line-subtle);
+  border-radius: 4px;
+  background: white;
+  color: var(--color-ink);
+  cursor: pointer;
+}
+
+.channel-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border: 1px solid var(--line-subtle);
+  border-radius: 6px;
+  background: var(--surface-panel);
+}
+
+.channel-icon {
+  display: grid;
+  width: 2.75rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--line-subtle);
+  border-radius: 6px;
+  color: #b2473f;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.channel-copy {
+  min-width: 0;
+}
+
+.channel-copy h3 {
+  margin-bottom: var(--space-1);
+  font-size: 1rem;
+}
+
+.channel-copy p {
+  margin-bottom: var(--space-2);
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.channel-copy .channel-state {
+  margin-bottom: 0;
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.channel-copy .is-connected {
+  color: var(--color-accent);
+}
+
+.channel-copy .last-poll {
+  margin-top: var(--space-1);
+  margin-bottom: 0;
+  font-size: 0.75rem;
+}
+
+.channel-row button {
+  white-space: nowrap;
+}
+
+.connection-badge {
+  padding: var(--space-2) var(--space-3);
+  border-radius: 4px;
+  background: #e5f3ee;
+  color: #12634f;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.notice {
+  margin: 0 0 var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.notice.success {
+  background: #e5f3ee;
+  color: #12634f;
+}
+
+.notice.error {
+  background: #fbefed;
+  color: var(--color-danger);
+}
+
+@media (max-width: 42rem) {
+  .channel-row {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .channel-row > button,
+  .connection-badge {
+    grid-column: 2;
+    justify-self: start;
+  }
+}

@@ -1,0 +1,138 @@
+.inbox-view {
+  width: min(100%, 70rem);
+  margin: 0 auto;
+  padding: var(--space-6) clamp(var(--space-4), 5vw, 4rem) var(--space-8);
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 1.125rem;
+}
+
+.text-link {
+  color: var(--color-accent);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.text-link:hover {
+  text-decoration: underline;
+}
+
+.status-message,
+.empty-state {
+  padding: var(--space-8);
+  border: 1px solid var(--line-subtle);
+  border-radius: 6px;
+  background: var(--surface-panel);
+}
+
+.status-message {
+  color: var(--color-muted);
+}
+
+.status-message.error {
+  color: var(--color-danger);
+}
+
+.status-message button {
+  min-height: 2.5rem;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--line-subtle);
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+.empty-state {
+  margin-top: var(--space-4);
+  text-align: center;
+}
+
+.empty-mark {
+  display: grid;
+  width: 3rem;
+  aspect-ratio: 1;
+  margin: 0 auto var(--space-4);
+  place-items: center;
+  border: 1px solid var(--line-subtle);
+  border-radius: 8px;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.empty-state h3 {
+  margin-bottom: var(--space-2);
+}
+
+.empty-state p,
+.sender,
+.preview {
+  color: var(--color-muted);
+}
+
+.conversation-list {
+  border-top: 1px solid var(--line-subtle);
+}
+
+.conversation-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.message-copy {
+  min-width: 0;
+}
+
+.conversation-row h3 {
+  margin-bottom: var(--space-1);
+  overflow-wrap: anywhere;
+  font-size: 0.9375rem;
+}
+
+.sender,
+.preview {
+  margin-bottom: var(--space-1);
+  font-size: 0.8125rem;
+}
+
+.preview {
+  margin-bottom: 0;
+  overflow-wrap: anywhere;
+}
+
+.conversation-row time {
+  flex: 0 0 auto;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
+
+@media (max-width: 40rem) {
+  .section-heading,
+  .conversation-row {
+    align-items: flex-start;
+  }
+
+  .conversation-row {
+    flex-direction: column;
+  }
+}

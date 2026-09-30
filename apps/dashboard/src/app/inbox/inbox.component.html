@@ -1,0 +1,38 @@
+<section class="inbox-view" aria-label="Gmail inbox">
+  <header class="section-heading">
+    <div>
+      <p class="eyebrow">GMAIL</p>
+      <h2>Recent messages</h2>
+    </div>
+    <a class="text-link" routerLink="/channels">Manage channels</a>
+  </header>
+
+  @if (loading()) {
+    <p class="status-message" role="status">Loading messages...</p>
+  } @else if (errorMessage()) {
+    <div class="status-message error" role="alert">
+      <p>{{ errorMessage() }}</p>
+      <button type="button" (click)="retry()">Retry</button>
+    </div>
+  } @else if (conversations().length === 0) {
+    <div class="empty-state">
+      <div class="empty-mark" aria-hidden="true">0</div>
+      <h3>No Gmail messages yet</h3>
+      <p>Connect Gmail to see new messages here.</p>
+      <a class="text-link" routerLink="/channels">Connect Gmail</a>
+    </div>
+  } @else {
+    <div class="conversation-list">
+      @for (conversation of conversations(); track conversation.id) {
+        <article class="conversation-row">
+          <div class="message-copy">
+            <h3>{{ conversation.lastMessageSubject || conversation.contactId }}</h3>
+            <p class="sender">{{ conversation.contactId }}</p>
+            <p class="preview" dir="auto">{{ conversation.lastMessagePreview }}</p>
+          </div>
+          <time>{{ formatDate(conversation.lastMessageAt) }}</time>
+        </article>
+      }
+    </div>
+  }
+</section>
